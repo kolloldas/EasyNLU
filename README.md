@@ -3,7 +3,7 @@ EasyNLU is a Natural Language Understanding (NLU) library written in Java for mo
 <Insert GIF>
 EasyNLU is licensed with Apache 2.0.
   
-### Overview
+## Overview
 At its core EasyNLU is a CCG based semantic parser. A good introduction to semantic parsing can be found [here](http://nbviewer.jupyter.org/github/wcmac/sippycup/blob/master/sippycup-unit-0.ipynb). A semantic parser can parse an input like:
 > Go to the dentist at 5pm tomorrow
 
@@ -19,7 +19,7 @@ In general following are the high steps to set up the NLU:
 3. Write a resolver to convert the structured form into task specific objects
 4. Integrate into the mobile app
 
-### Parsing
+## Parsing
 Before writing the rules we should define the scope of the task and the parameters of the structured form. As a toy example let's say our task is to turn on and off phone features like Bluetooh, Wifi and GPS. So the fields are:
 * Feature: (bluetooth, wifi, gps)
 * Action: (enable/disable)
@@ -33,7 +33,7 @@ Also it helps to have a few sample inputs to understand the variations:
 * enable wifi
 * kill GPS
 
-#### Defining a Rule
+### Defining a Rule
 Continuing the toy example, we can say that at the top level we have a setting action that must have a feature and an action. We use rules to capture this information:
 ```
 Rule r1 = new Rule("$Setting", "$Feature $Action");
@@ -90,7 +90,7 @@ To determine if a parse is succesful the parser looks for a special category cal
 Rule root = new Rule("$ROOT", "$Setting");
 ```
 With these set of rules our parser should be able to parse the above examples, converting them into so called syntax trees.
-#### Attaching Semantics
+### Attaching Semantics
 Parsing is no good if we cannot extract the meaning of the sentence. This meaning is captured by the structured form (Logical form in NLP jargon). In EasyNLU we pass a third parameter in the rule definition to define how the semantics will be captured. We use JSON syntax with special markers to do this:
 ```
 new Rule("$Action", "$EnableDisable", "{action:@first}"),
@@ -133,7 +133,7 @@ List<Rule> rules = Arrays.asList(
 ```
 If the semantics parameter is not provided the parser will create a default value equal to the RHS.
 
-#### Running the Parser
+### Running the Parser
 To run the parser clone this repository and import the parser module into your Android Studio/IntelliJ project. The EasyNLU takes a `Grammar` object that holds the rules, a `Tokenizer` object to convert the input sentence into words and an optional list of `Annotator` objects to annotate entities like numbers, dates, places etc. Run the following code after defining the rules:
 ```
   Grammar grammar = new Grammar(rules, "$ROOT");
@@ -153,12 +153,12 @@ You should get the following output:
 [{feature=gps, action=disable}]
 ```
 Try out other variations. If a parse fails for a sample variant you'll get no output. You can then add or modify the rules and repeat the grammar engineering process. 
-#### Using annotators
+### Using annotators
 Annotators make it easier to specific types of tokens that would otherwise be cumbersome or downright impossible to handle via rules. For instance take the `NumberAnnotator` class. It will detect and annotate all numbers as `$NUMBER`. You can then directly reference the category in your rules, e.g:
 ```
 Rule r = new Rule("$Conversion", "$Convert $NUMBER $Unit $To $Unit", "{convertFrom: {unit: @2, quantity: @1}, convertTo: {unit: @last}}"
 ```
-#### Defining rules in text files
+### Defining rules in text files
 EasyNLU supports loading rules from text files. Each rule must be in a separate line. The LHS, RHS and the semantics must be separated by tabs:
 ```
 $EnableDisable  ?$Switch $OnOff @last
