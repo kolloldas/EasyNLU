@@ -33,12 +33,7 @@ public class ReminderLearn {
         );
 
         Grammar grammar = new Grammar(rules, "$ROOT");
-
-        Map<String, Float> weights = grammar.getNonTerminalRules().stream()
-                .collect(Collectors.toMap(Rule::toString, k -> (float)random.nextGaussian()));
-
         Parser parser = new Parser(grammar, new BasicTokenizer(), annotators);
-        parser.setWeights(weights);
 
         return new Model(parser);
     }
