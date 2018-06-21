@@ -94,12 +94,14 @@ public class SemanticUtils {
                     }
                     break;
             }
-        }else{
+        }else if(semantics.startsWith("{")){
             final Map<String, Object> template = GSON.fromJson(
                     semantics, new TypeToken<HashMap<String, Object>>() {
                     }.getType()
             );
             fn = parseTemplate(template);
+        }else {
+            fn = valueFn(semantics);
         }
 
         return fn;

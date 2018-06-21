@@ -96,6 +96,17 @@ class SemanticUtilsTest {
     }
 
     @Test
+    void parseSemanticsValue() {
+
+        List<Map<String, Object>> expected = Collections.singletonList(
+                value("test")
+        );
+
+        assertEquals(expected, SemanticUtils.parseSemantics("test").apply(null));
+
+    }
+
+    @Test
     void parseSemanticsJson() {
         List<Map<String, Object>> params = Arrays.asList(
                 value(1),
