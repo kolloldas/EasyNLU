@@ -1,0 +1,139 @@
+call John tomorrow morning	{task:"call John", startTime:{offset: {day:1}, shift:"morning"}}
+call John in the morning tomorrow	{task:"call John", startTime:{offset: {day:1}, shift:"morning"}}
+call John next day morning	{task:"call John", startTime:{offset: {day:1}, shift:"morning"}}
+call John tomorrow in the morning	{task:"call John", startTime:{offset: {day:1}, shift:"morning"}}
+
+call John in the morning	{task:"call John", startTime:{shift:"morning"}}
+call John morning	{task:"call John", startTime:{shift:"morning"}}
+call John 10am	{task:"call John", startTime:{shift:"am", hour:10}}
+
+take my medicine at 4 pm	{task:"take my medicine", startTime:{hour:4, shift:"pm"}}
+take my medicine by 4pm	{task:"take my medicine", startTime:{hour:4, shift:"pm"}}
+take my medicine at 4:00pm	{task:"take my medicine", startTime:{hour:4, shift:"pm"}}
+take my medicine at 4 in the evening	{task:"take my medicine", startTime:{hour:4, shift:"evening"}}
+
+take my test at 5 pm tomorrow	{task:"take my test", startTime:{hour:5, shift:"pm", offset:{day:1}}}
+take my test tomorrow by 5 pm	{task:"take my test", startTime:{hour:5, shift:"pm", offset:{day:1}}}
+take my test next day by 5 pm	{task:"take my test", startTime:{hour:5, shift:"pm", offset:{day:1}}}
+take my test after a day by 5 pm	{task:"take my test", startTime:{hour:5, shift:"pm", offset:{day:1}}}
+
+get married next week	{task:"get married", startTime:{offset:{week:1}}}
+get married coming week	{task:"get married", startTime:{offset:{week:1}}}
+get married in 1 week	{task:"get married", startTime:{offset:{week:1}}}
+
+see the dentist after 2 days	{task:"see the dentist", startTime:{offset:{day:2}}}
+see the dentist in 2 days	{task:"see the dentist", startTime:{offset:{day:2}}}
+see the dentist in a day	{task:"see the dentist", startTime:{offset:{day:1}}}
+see the dentist in 2 days at 4	{task:"see the dentist", startTime:{offset:{day:2}, hour:4}}
+
+meet Alice on Monday afternoon for lunch	{task:"meet Alice", auxTask:"lunch", startTime:{dow:1, shift:"afternoon"}}
+meet Alice in the afternoon Monday for lunch	{task:"meet Alice", auxTask:"lunch", startTime:{dow:1, shift:"afternoon"}}
+meet Alice Monday night for dinner	{task:"meet Alice", auxTask:"dinner", startTime:{dow:1, shift:"night"}}
+
+go for a jog everyday at 6 in the morning	{task:"go for a jog", startTime:{hour:6, shift:"morning"}, repeat:{day:1}}
+go for a jog daily at 6 in the morning	{task:"go for a jog", startTime:{hour:6, shift:"morning"}, repeat:{day:1}}
+go for a jog every morning at 6	{task:"go for a jog", startTime:{hour:6}, repeat:{day:1, shift:"morning"}}
+go for a shower at the gym every morning at 6	{task:"go for a shower at the gym", startTime:{hour:6}, repeat:{day:1, shift:"morning"}}
+go for a jog by 6 in the morning every day	{task:"go for a jog", startTime:{hour:6, shift:"morning"}, repeat:{day:1}}
+go for a jog in the park by 6 in the morning every day	{task:"go for a jog in the park", startTime:{hour:6, shift:"morning"}, repeat:{day:1}}
+
+go for a swim every evening	{task:"go for a swim", repeat:{day:1, shift:"evening"}}
+go for a swim every day in the evening	{task:"go for a swim", repeat:{day:1}, startTime:{shift:"evening"}}
+day dream every day in the evening	{task:"day dream", repeat:{day:1}, startTime:{shift:"evening"}}
+day dream daily in the evening	{task:"day dream", repeat:{day:1}, startTime:{shift:"evening"}}
+
+get milk and bread at 7	{task:"get milk and bread", startTime:{hour:7}}
+get milk and bread by 7	{task:"get milk and bread", startTime:{hour:7}}
+get milk and bread at 7:00	{task:"get milk and bread", startTime:{hour:7}}
+get daily bread at 7:00	{task:"get daily bread", startTime:{hour:7}}
+get bread at 7:00 daily	{task:"get bread", startTime:{hour:7}, repeat:{day:1}}
+
+call my boss after 20 min	{task:"call my boss", startTime:{offset: {minute: 20}}}
+call my boss in 20 minutes	{task:"call my boss", startTime:{offset: {minute: 20}}}
+call my neighbor next door after 20 min	{task:"call my neighbor next door", startTime:{offset: {minute: 20}}}
+
+wish Sara happy birthday on June 14	{task:"wish Sara happy birthday", startTime:{day:14, month:6}}
+wish Sara happy birthday on 14th June	{task:"wish Sara happy birthday", startTime:{day:14, month:6}}
+wish Sara happy birthday on 14/06	{task:"wish Sara happy birthday", startTime:{day:14, month:6}}
+send happy birthday message to Sara on 14/06	{task:"send happy birthday message to Sara", startTime:{day:14, month:6}}
+
+speak to my mom at 10pm every sunday	{task:"speak to my mom", startTime:{hour:10, shift:"pm"}, repeat:{dow:7}}
+speak to my mom each sunday by 10:00pm	{task:"speak to my mom", startTime:{hour:10, shift:"pm"}, repeat:{dow:7}}
+
+drink water every 2 hrs between 10am and 4pm	{task:"drink water", startTime:{hour:10, shift:"am"}, endTime:{hour:4, shift:"pm"}, repeat:{hour:2}}
+drink water between 10am and 4:00pm every 2 hrs	{task:"drink water", startTime:{hour:10, shift:"am"}, endTime:{hour:4, shift:"pm"}, repeat:{hour:2}}
+drink water hourly between 10am and 4:00pm	{task:"drink water", startTime:{hour:10, shift:"am"}, endTime:{hour:4, shift:"pm"}, repeat:{hour:1}}
+
+pay insurance by August	{task:"pay insurance", startTime:{month:8}}
+pay insurance in August	{task:"pay insurance", startTime:{month:8}}
+pay insurance on August 13	{task:"pay insurance", startTime:{month:8, day:13}}
+
+go for a health check up on 12/7	{task:"go for a health check up", startTime:{day:12, month:7}}
+go for a health check up on the 12th of July	{task:"go for a health check up", startTime:{day:12, month:7}}
+go for a health check-up at NHS on 12/7	{task:"go for a health check up at NHS", startTime:{day:12, month:7}}
+
+stand up every 45min	{task:"stand up", repeat:{minute:45}}
+stand up every 45min after 42min	{task:"stand up", repeat:{minute:45}, startTime:{offset:{minute:42}}}
+stand up every 45min after a minute	{task:"stand up", repeat:{minute:45}, startTime:{offset:{minute:1}}}
+stand up after 42min every 45min	{task:"stand up", repeat:{minute:45}, startTime:{offset:{minute:42}}}
+stand up for a stretch every 45min	{task:"stand up for a stretch", repeat:{minute:45}}
+
+take Amy for dinner tomorrow	{task:"take Amy for dinner", startTime:{offset:{day:1}}}
+take Amy for dinner next day	{task:"take Amy for dinner", startTime:{offset:{day:1}}}
+take Amy for dinner at the ritz tomorrow	{task:"take Amy for dinner at the ritz", startTime:{offset:{day:1}}}
+take Amy for a ride to boston tomorrow	{task:"take Amy for a ride to boston", startTime:{offset:{day:1}}}
+take Amy to boston tomorrow for a ride	{task:"take Amy to boston", auxTask:"a ride", startTime:{offset:{day:1}}}
+
+pay electricity bill on the 23rd	{task:"pay electricity bill", startTime:{day:23}}
+pay electricity bill on 23	{task:"pay electricity bill", startTime:{day:23}}
+pay electricity bill till 23	{task:"pay electricity bill", endTime:{day:23}}
+pay electricity bill between tomorrow and 23rd	{task:"pay electricity bill", startTime:{offset:{day:1}}, endTime:{day:23}}
+
+wake up at 8am everyday from tomorrow till the 15th	{task:"wake up", startTime:{offset:{day:1}, hour:8, shift:"am"}, endTime:{day:15}, repeat:{day:1}}
+wake up at 8 every morning from tomorrow till the 15th	{task:"wake up", startTime:{offset:{day:1}, hour:8, shift:"morning"}, endTime:{day:15}, repeat:{day:1}}
+
+turn off the wifi every night	{task:"turn off the wifi", repeat:{day:1, shift:"night"}}
+turn off the wifi tonight	{task:"turn off the wifi", startTime:{shift:"night"}}
+turn off the wifi everyday at night	{task:"turn off the wifi", repeat:{day:1}, startTime:{shift:"night"}}
+turn off the wifi after dinner at night	{task:"turn off the wifi after dinner", startTime:{shift:"night"}}
+
+put food in the freezer at 11:45	{task:"put food in the freezer", startTime:{hour:11, minute:45}}
+put food in the freezer by 11:45	{task:"put food in the freezer", startTime:{hour:11, minute:45}}
+put food in the freezer in 2hrs	{task:"put food in the freezer", startTime:{offset:{hour:2}}}
+put food in the freezer in an hr	{task:"put food in the freezer", startTime:{offset:{hour:1}}}
+
+pay Rs. 2000 to Jimmy tomorrow	{task:"pay Rs. 2000 to Jimmy", startTime:{offset:{day:1}}}
+pay Rs. 1259 to Jimmy next day	{task:"pay Rs. 1259 to Jimmy", startTime:{offset:{day:1}}}
+pay $100 to Jimmy next day	{task:"pay USD100 to Jimmy", startTime:{offset:{day:1}}}
+
+call Judy in the evening tomorrow	{task:"call Judy", startTime:{offset:{day:1}, shift:"evening"}}
+call Judy tomorrow in the evening	{task:"call Judy", startTime:{offset:{day:1}, shift:"evening"}}
+call Judy by tomorrow evening	{task:"call Judy", startTime:{offset:{day:1}, shift:"evening"}}
+
+meet accountant next week for filing tax	{task:"meet accountant", auxTask:"filing tax", startTime:{offset:{week:1}}}
+meet accountant for filing tax next week	{task:"meet accountant for filing tax", startTime:{offset:{week:1}}}
+meet accountant for filing tax tomorrow at noon	{task:"meet accountant for filing tax", startTime:{offset:{day:1}, shift:"noon"}}
+
+buy a gift for mom at the mall today	{task:"buy a gift for mom at the mall", startTime:{offset:{day:0}}}
+buy a gift for mom at the mall tonight	{task:"buy a gift for mom at the mall", startTime:{shift:"night"}}
+buy a gift from Next for mom today	{task:"buy a gift from Next for mom", startTime:{offset:{day:0}}}
+
+clean up closet by evening	{task:"clean up closet", startTime:{shift:"evening"}}
+clean up closet in the evening	{task:"clean up closet", startTime:{shift:"evening"}}
+clean up closet evening 7	{task:"clean up closet", startTime:{shift:"evening", hour:7}}
+
+visa appointment on 05/05/2018	{task:"visa appointment", startTime:{day:5, month:5, year:2018}}
+visa appointment on 5th May 2018	{task:"visa appointment", startTime:{day:5, month:5, year:2018}}
+visa appointment on 5th of May 2018	{task:"visa appointment", startTime:{day:5, month:5, year:2018}}
+visa appointment on May 5 2018	{task:"visa appointment", startTime:{day:5, month:5, year:2018}}
+visa appointment next month on the 7th	{task:"visa appointment", startTime:{offset:{month:1}, day:7}}
+
+cancel comcast subscription next month	{task:"cancel comcast subscription", startTime:{offset:{month:1}}}
+cancel Comcast subscription after a week	{task:"cancel Comcast subscription", startTime:{offset:{week:1}}}
+
+flip the pancakes every minute	{task:"flip the pancakes", repeat:{minute:1}}
+flip the pancakes each minute	{task:"flip the pancakes", repeat:{minute:1}}
+flip the pancakes after a minute	{task:"flip the pancakes", startTime:{offset:{minute:1}}}
+
+pay rent between today and tomorrow	{task:"pay rent", startTime:{offset:{day:0}}, endTime:{offset:{day:1}}}
+pay rent between today and next month	{task:"pay rent", startTime:{offset:{day:0}}, endTime:{offset:{month:1}}}

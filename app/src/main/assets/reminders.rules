@@ -1,0 +1,43 @@
+$ROOT	$Task $Reminder	@merge
+$Task	$PHRASE	{task:@first}
+$Reminder	$ReminderItem ?$Reminder	@merge
+$ReminderItem	$StartTime	@first
+$ReminderItem	$EndTime	@first
+$ReminderItem	$BetweenTime	@first
+$ReminderItem	$Repeat	@first
+$ReminderItem	$AuxTask	@first
+$Every	every
+$Every	each
+$Next	next
+$Next	coming
+$Till	till
+$Till	until
+$Between	between
+$StartTime	?$By $DATE	{startTime:@last}
+$StartTime	$From $DATE	{startTime:@last}
+$StartTime	$NextDate	{startTime:@first}
+$StartTime	$AfterDuration	{startTime:@first}
+$Repeat	$EveryShift	{repeat:@first}
+$EveryShift	everyday	{day:1}
+$EveryShift	$Every $Day	{day:1}
+$EveryShift	$Daily	{day:1}
+$EveryShift	$Every $Minute	{minute:1}
+$EveryShift	$Every $Hour	{hour:1}
+$EveryShift	$Hourly	{hour:1}
+$EveryShift	$Every $Morning	{day:1, shift:morning}
+$EveryShift	$Every $Evening	{day:1, shift:evening}
+$EveryShift	$Every $Noon	{day:1, shift:noon}
+$EveryShift	$Every $Afternoon	{day:1, shift:afternoon}
+$EveryShift	$Every $Night	{day:1, shift:night}
+$EveryShift	$Every $Week	{week:1}
+$EveryShift	$Every $Month	{month:1}
+$EveryShift	$Every $Year	{year:1}
+$EveryShift	$Weekly	{week:1}
+$EveryShift	$Monthly	{month:1}
+$EveryShift	$Yearly	{year:1}
+$EveryShift	$Every $DATE_DOW	@last
+$EveryShift	$Every $DATE_DURATION	@last
+$EndTime	$Till $DATE	{endTime:@last}
+$EndTime	$To $DATE	{endTime:@last}
+$BetweenTime	$Between $DATE $And $DATE	{startTime:@1, endTime:@3}
+$AuxTask	$For $PHRASE	{auxTask:@last}

@@ -1,0 +1,175 @@
+Rule($EveryShift->$Every $Hour)	0.000030
+Rule($DATE->$DATE_DAY $DATE_MONTH)	-0.225555
+startTime:offset:hour	0.175895
+Rule($DATE->$On $DATE_$On____)	0.422125
+Rule($DATE->$DATE_MONTH $DATE_DAY)	-0.219474
+Rule($EndTime->$To $DATE)	0.000044
+Rule($BetweenTime_$Between->$DATE $BetweenTime_$Between_$DATE)	0.042162
+Rule($DATE->$The $DATE_$The___)	0.000028
+Rule($DATE_ELEMENT->$DATE_SHIFT)	0.151303
+Rule($DATE_$The->$DATE_DAY $DATE_$The_$DATE_DAY)	-0.065114
+Rule($DATE_$On_______->$The $DATE_$On________$The)	0.000025
+startTime:dow	0.991080
+Rule($Reminder->$ReminderItem $Reminder)	-0.685865
+Rule($DATE_ELEMENT->$AtBy $NUMBER)	-0.128416
+Rule($DATE_ELEMENT->$In $DATE_ELEMENT_$In)	0.473307
+Rule($EveryShift->$Every $Minute)	0.148681
+startTime:offset:week	0.379374
+Rule($EveryShift->$Monthly)	0.000069
+Rule($DATE_ELEMENT->$DATE_OFFSET)	0.108587
+Rule($DATE_$DATE_DAY__$Of->$DATE_MONTH $DATE_YEAR)	-0.090694
+Rule($DATE->$The $DATE_DAY)	-0.748232
+Rule($DATE_$On________$The->$DATE_DAY $DATE_$On________$The_$DATE_DAY)	-0.000018
+Rule($DATE_$On_____->$DATE_MONTH $DATE_DAY)	0.199847
+Rule($DATE->$DATE_ELEMENT)	0.104200
+Rule($DATE_ELEMENT->$NUMBER)	-0.925775
+repeat:day	0.343783
+Rule($DATE_$On->$The $DATE_DAY)	0.392440
+startTime:hour	0.162212
+Rule($DATE_$On__->$The $DATE_$On___$The)	-0.000014
+Rule($DATE_DURATION->$NUMBER $Minute)	0.003451
+Rule($AtBy->$By)	-0.115355
+Rule($DATE->$DATE_DAY $DATE_$DATE_DAY__)	-0.011666
+Rule($NextDate->$Next $Day)	-0.137094
+Rule($DATE_DURATION->$NUMBER $Year)	0.000002
+repeat:minute	0.138995
+Rule($DATE_$On____->$DATE_DAY $DATE_MONTH)	0.422190
+startTime:day	0.121605
+Rule($BetweenTime->$Between $BetweenTime_$Between)	0.042228
+startTime:offset	0.970610
+Rule($DATE_DURATION->$NUMBER $Month)	0.000054
+startTime:shift	0.232142
+endTime:hour	-0.169618
+Rule($Task->$PHRASE)	0.020729
+Rule($DATE->$On $DATE_$On)	0.392370
+Rule($NextDate->$Next $Hour)	-0.000093
+repeat:hour	0.203161
+Rule($DATE->$On $DATE_$On___)	0.000032
+Rule($DATE_$On_________->$DATE_DAY $DATE_$On__________$DATE_DAY)	0.182863
+Rule($DATE_ELEMENT->$AfterDuration)	0.353230
+Rule($DATE_$On___->$DATE_DAY $DATE_$On____$DATE_DAY)	-0.000024
+Rule($DATE->$DATE_DAY $DATE_$DATE_DAY_)	-0.090732
+Rule($DATE_$On_______$The->$DATE_DAY $DATE_$On_______$The_$DATE_DAY)	0.000074
+startTime	1.068952
+Rule($Repeat->$EveryShift)	0.554096
+Rule($DATE->$On $DATE_$On_______)	-0.000014
+Rule($DATE_$On________$The_$DATE_DAY->$DATE_MONTH $DATE_YEAR)	0.000096
+Rule($NextDate->$Next $Week)	0.362867
+Rule($StartTime->$DATE)	-0.936624
+Rule($DATE_DURATION->$NUMBER $Hour)	0.275767
+Rule($DATE_$On_______$The_$DATE_DAY->$Of $DATE_$On_______$The_$DATE_DAY_$Of)	0.000006
+endTime:shift	0.123166
+Rule($EveryShift->$Daily)	0.081397
+Rule($DATE_$On_________$DATE_DAY_$Of->$DATE_MONTH $DATE_YEAR)	0.106237
+Rule($DATE_DURATION->$A $Second)	0.000011
+Rule($DATE_ELEMENT->$DATE_DOW)	0.552752
+Rule($DATE_ELEMENT->$AtBy $Noon)	-0.062314
+Rule($EveryShift->$Yearly)	0.000037
+Rule($EveryShift->$Every $Noon)	0.000017
+Rule($ROOT->$Task $Reminder)	0.020781
+Rule($DATE_ELEMENT->$NextDate)	0.376965
+Rule($DATE_$On________->$DATE_DAY $DATE_$On_________$DATE_DAY)	0.106200
+Rule($EveryShift->$Every $Month)	-0.000120
+repeat:shift	0.229304
+endTime	-0.013285
+endTime:offset:month	0.090738
+startTime:offset:month	-0.141883
+Rule($DATE_$On_________$DATE_DAY->$Of $DATE_$On_________$DATE_DAY_$Of)	0.106155
+startTime:year	0.322075
+startTime:minute	0.274814
+startTime:offset:minute	0.092627
+Rule($EveryShift->$Every $Day)	0.087448
+Rule($DATE_$The__->$DATE_DAY $DATE_$The___$DATE_DAY)	0.000005
+Rule($DATE_DURATION->$NUMBER $Week)	0.012252
+Rule($DATE_DURATION->$NUMBER $Second)	-0.000022
+Rule($DATE_$DATE_DAY->$Of $DATE_MONTH)	-0.000965
+Rule($DATE_ELEMENT->$Noon)	-0.017491
+Rule($DATE->$On $DATE_$On_________)	0.182940
+Rule($StartTime->$By $DATE)	0.750030
+Rule($DATE->$On $DATE_$On__________)	0.184265
+Rule($DATE_$The___->$DATE_DAY $DATE_$The____$DATE_DAY)	-0.000043
+Rule($DATE->$On $DATE_DAY)	0.501701
+Rule($StartTime->$From $DATE)	-0.325878
+Rule($DATE->$On $DATE_$On______)	-0.000070
+Rule($DATE_$The_$DATE_DAY->$Of $DATE_MONTH)	-0.065163
+Rule($StartTime->$AfterDuration)	-0.039607
+Rule($DATE->$In $DATE_MONTH)	0.399461
+Rule($EveryShift->$Every $Morning)	0.205256
+Rule($ReminderItem->$BetweenTime)	0.042245
+Rule($EveryShift->$Hourly)	0.070038
+Rule($AtBy->$At)	0.905219
+Rule($DATE_$The____$DATE_DAY->$DATE_MONTH $DATE_YEAR)	-0.000021
+Rule($ReminderItem->$Repeat)	0.554073
+Rule($DATE_DURATION->$NUMBER $Day)	-0.019142
+Rule($DATE_ELEMENT->$Night)	-0.264825
+Rule($DATE_$On_->$The $DATE_$On__$The)	0.230632
+Rule($BetweenTime_$Between_$DATE->$And $DATE)	0.042245
+Rule($DATE->$The $DATE_$The_)	0.000006
+Rule($DATE_ELEMENT_$In->$The $DATE_SHIFT)	0.473351
+endTime:month	-0.002943
+Rule($ReminderItem->$EndTime)	-0.055554
+Rule($DATE_ELEMENT->$In $DATE_SHIFT)	-0.000012
+Rule($DATE->$The $DATE_$The)	-0.065157
+Rule($AuxTask->$For $PHRASE)	-0.403102
+Rule($DATE_ELEMENT->$AtBy $DATE_TIME)	0.667375
+endTime:offset	0.139344
+task	0.020790
+Rule($ReminderItem->$AuxTask)	-0.403001
+Rule($DATE->$On $DATE_$On_____)	0.199820
+Rule($DATE_DURATION->$An $Hour)	0.033147
+Rule($Reminder->$ReminderItem)	0.020789
+Rule($DATE_DURATION->$A $Month)	-0.000005
+Rule($DATE_$On__________->$DATE_MONTH $DATE_$On___________$DATE_MONTH)	0.184205
+Rule($EveryShift->$Every $Night)	0.028189
+Rule($AfterDuration->$In $DATE_DURATION)	0.256602
+Rule($AfterDuration->$After $DATE_DURATION)	0.056913
+Rule($DATE_$The_->$DATE_DAY $DATE_MONTH)	-0.000017
+Rule($DATE_$On__$The_$DATE_DAY->$Of $DATE_MONTH)	0.230528
+Rule($ReminderItem->$StartTime)	-0.802785
+auxTask	-0.403090
+Rule($DATE->$DATE_DAY $DATE_$DATE_DAY)	-0.001006
+Rule($DATE->$On $DATE_$On________)	0.106177
+Rule($DATE_$On___$The->$DATE_DAY $DATE_MONTH)	-0.000073
+Rule($DATE_$On______->$The $DATE_$On_______$The)	-0.000037
+Rule($NextDate->$Next $Minute)	-0.000015
+Rule($DATE_$On___________$DATE_MONTH->$DATE_DAY $DATE_YEAR)	0.184204
+Rule($DATE_$DATE_DAY_->$Of $DATE_$DATE_DAY__$Of)	-0.090717
+Rule($EveryShift->$Every $Afternoon)	0.000028
+Rule($EveryShift->$Weekly)	0.000053
+Rule($DATE->$The $DATE_$The__)	-0.000027
+repeat	0.554086
+Rule($DATE_ELEMENT->$On $DATE_DOW)	0.420975
+Rule($DATE->$DATE_DAY)	-0.825652
+Rule($DATE_$The___$DATE_DAY_$Of->$DATE_MONTH $DATE_YEAR)	0.000060
+Rule($EveryShift->$Every $Evening)	-0.004115
+Rule($DATE_$On__________$DATE_DAY->$DATE_MONTH $DATE_YEAR)	0.182914
+Rule($DATE_ELEMENT->$DATE_TIME)	-0.307559
+Rule($DATE_ELEMENT->$AtBy $Night)	0.313037
+Rule($EveryShift->$Every $DATE_DOW)	-0.131876
+Rule($NextDate->$Next $Month)	-0.099535
+Rule($DATE->$On $DATE_$On__)	-0.000038
+Rule($DATE_$On_______$The_$DATE_DAY_$Of->$DATE_MONTH $DATE_YEAR)	-0.000106
+endTime:offset:day	0.048657
+Rule($EveryShift->$Every $Year)	0.000033
+Rule($DATE_DURATION->$A $Year)	0.000028
+Rule($DATE->$DATE_MONTH $DATE_$DATE_MONTH)	-0.048784
+Rule($DATE_$The___$DATE_DAY->$Of $DATE_$The___$DATE_DAY_$Of)	0.000012
+Rule($DATE_DURATION->$A $Week)	0.004253
+Rule($StartTime->$NextDate)	-0.250767
+Rule($DATE_DURATION->$A $Day)	0.047899
+Rule($DATE_$On__$The->$DATE_DAY $DATE_$On__$The_$DATE_DAY)	0.230565
+endTime:day	0.019888
+startTime:month	0.167647
+Rule($EveryShift->$Every $DATE_DURATION)	0.123437
+startTime:offset:day	0.464698
+Rule($DATE_$On____$DATE_DAY->$Of $DATE_MONTH)	-0.000016
+Rule($EveryShift->$Every $Week)	-0.000032
+Rule($DATE->$DATE_MONTH)	-0.970783
+Rule($DATE_$DATE_DAY__->$DATE_MONTH $DATE_YEAR)	-0.011738
+Rule($DATE->$DATE_ELEMENT $DATE)	0.829998
+Rule($EndTime->$Till $DATE)	-0.055566
+Rule($DATE_DURATION->$A $Minute)	0.079440
+Rule($DATE->$On $DATE_$On_)	0.230590
+Rule($DATE_$DATE_MONTH->$DATE_DAY $DATE_YEAR)	-0.048855
+repeat:dow	-0.131780
+Rule($DATE_ELEMENT->$The $DATE_SHIFT)	-0.776908
