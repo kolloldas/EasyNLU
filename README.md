@@ -1,6 +1,10 @@
 # EasyNLU
-EasyNLU is a Natural Language Understanding (NLU) library written in Java for mobile apps. Being grammar based, it is a good fit for domains that are narrow but require tight control. The project has a sample Android application that can schedule reminders from natural language input:
-<Insert GIF>
+EasyNLU is a Natural Language Understanding (NLU) library written in Java for mobile apps. Being grammar based, it is a good fit for domains that are narrow but require tight control. 
+
+The project has a sample Android application that can schedule reminders from natural language input:
+
+![screenshot](screenshot.gif)
+
 EasyNLU is licensed with Apache 2.0.
   
 ## Overview
