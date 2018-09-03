@@ -74,6 +74,49 @@ class SemanticUtilsTest {
         assertEquals(last, SemanticUtils.last(params));
     }
 
+
+    @Test
+    void appendSingle(){
+        List<Map<String, Object>> params = Collections.singletonList(named("a", 1));
+
+        List<Object> expected = Collections.singletonList(
+                                    named("a", 1));
+
+        assertEquals(expected, SemanticUtils.append(params, "x"));
+    }
+
+    @Test
+    void appendTwo(){
+        List<Map<String, Object>> params = Arrays.asList(
+                named("x", Collections.singletonList(named("a", 1))),
+                named("b",2)
+        );
+
+        List<Object> expected = Arrays.asList(
+                        named("a", 1),
+                        named("b",2)
+                    );
+
+        assertEquals(expected, SemanticUtils.append(params, "x"));
+    }
+
+    @Test
+    void appendMulti(){
+        List<Map<String, Object>> params = Arrays.asList(
+                named("x", Collections.singletonList(named("a", 1))),
+                named("b",2), named(KEY_UNNAMED, 4),
+                named("c",3)
+        );
+
+        List<Object> expected = Arrays.asList(
+                        named("a", 1),
+                        named("b",2),
+                        named("c",3)
+                );
+
+        assertEquals(expected, SemanticUtils.append(params, "x"));
+    }
+
     @Test
     void parseSemantics() {
         List<Map<String, Object>> params = Arrays.asList(
@@ -199,6 +242,26 @@ class SemanticUtilsTest {
                 value(1),
                 named("x", 10),
                 named("y", 20)
+        );
+
+        SemanticFunction fn = SemanticUtils.parseTemplate(template);
+        assertEquals(Collections.singletonList(expected), fn.apply(params));
+    }
+
+    @Test
+    void parseTemplateAppend(){
+        Map<String, Object> template = named("x", _APPEND);
+
+        Map<String, Object> expected = named("x", Arrays.asList(
+                named("a", 10),
+                named("b",20),
+                named("c",3)
+        ));
+
+        List<Map<String, Object>> params = Arrays.asList(
+                value(1),
+                named("x", Arrays.asList(named("a", 10), named("b", 20))),
+                named("c",3)
         );
 
         SemanticFunction fn = SemanticUtils.parseTemplate(template);

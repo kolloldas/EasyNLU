@@ -16,9 +16,11 @@ public class SemanticUtils {
         }
     }
 
+    public final static String _IDENTITY = "@identity";
     public final static String _FIRST = "@first";
     public final static String _LAST = "@last";
     public final static String _MERGE = "@merge";
+    public final static String _APPEND = "@append";
     public final static String KEY_UNNAMED = "__unnamed";
 
     private final static Gson GSON = new Gson();
@@ -71,12 +73,16 @@ public class SemanticUtils {
         return Collections.singletonList(params.get(params.size()-1));
     }
 
+
     public static SemanticFunction parseSemantics(String semantics){
         SemanticFunction fn = null;
 
         semantics = semantics.trim();
         if(semantics.startsWith("@")) {
             switch (semantics.toLowerCase()) {
+                case _IDENTITY:
+                    fn = SemanticUtils::identity;
+                    break;
                 case _FIRST:
                     fn = SemanticUtils::first;
                     break;
@@ -156,6 +162,9 @@ public class SemanticUtils {
                                 case _LAST:
                                     subsume(mapOut, params.get(params.size() - 1), entry.getKey());
                                     break;
+                                case _APPEND:
+                                    mapOut.put(entry.getKey(), append(params, entry.getKey()));
+                                    break;
                                 default:
                                     processNumberParam(mapOut, entry.getKey(), value, params);
                                     break;
@@ -194,6 +203,22 @@ public class SemanticUtils {
 
     static void subsume(Map<String, Object> parent, Map<String, Object> child, String key){
         parent.put(key, child.containsKey(KEY_UNNAMED) ? child.get(KEY_UNNAMED) : child);
+    }
+
+    static List<Object> append(List<Map<String, Object>> params, String key){
+        List<Object> list = new LinkedList<>();
+        for(Map<String, Object> p: params){
+            if(p.containsKey(key)){
+                Object v = p.get(key);
+                if(v instanceof List){
+                    list.addAll((List<Object>)v);
+                }
+            }else if(!p.isEmpty() && !p.containsKey(KEY_UNNAMED)){
+                list.add(p);
+            }
+        }
+
+        return list;
     }
 
 }
