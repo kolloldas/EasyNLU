@@ -34,21 +34,21 @@ import java.util.regex.Pattern;
  */
 public class DateTimeAnnotator implements Annotator {
 
-	final static String CAT_DATE = "$DATE";
+    final static String CAT_DATE = "$DATE";
 
 
-	static final List<String> MONTHS = Arrays.asList(
-				"january", "february", "march", "april", "may", "june",
-				"july", "august", "september", "october", "november", "december",
-				"jan", "feb", "mar", "apr", "jun",
-				"jul", "aug", "sep", "oct", "nov", "dec"
-			);
+    static final List<String> MONTHS = Arrays.asList(
+                "january", "february", "march", "april", "may", "june",
+                "july", "august", "september", "october", "november", "december",
+                "jan", "feb", "mar", "apr", "jun",
+                "jul", "aug", "sep", "oct", "nov", "dec"
+            );
 
 
-	static final List<String> DOW = Arrays.asList(
-			"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday",
-			"mon", "tue", "wed", "thu", "fri", "sat", "sun"
-		);
+    static final List<String> DOW = Arrays.asList(
+            "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday",
+            "mon", "tue", "wed", "thu", "fri", "sat", "sun"
+        );
 
 
     static final Map<String, String> SHIFT_MAP = new HashMap<String, String>(){{
@@ -57,10 +57,10 @@ public class DateTimeAnnotator implements Annotator {
         put("am", "am"); put("pm", "pm");
     }};
 
-	static final Pattern PATTERN_NUMBER = Pattern.compile("(\\d+)(st$|rd$|th$)?");
+    static final Pattern PATTERN_NUMBER = Pattern.compile("(\\d+)(st$|rd$|th$)?");
 
-	static final List<Rule> DATE_RULES = Arrays.asList(
-	        new Rule("$Hour", "hour"),
+    static final List<Rule> DATE_RULES = Arrays.asList(
+            new Rule("$Hour", "hour"),
             new Rule("$Hour", "hours"),
             new Rule("$Hour", "hr"),
             new Rule("$Hour", "h"),
@@ -71,9 +71,9 @@ public class DateTimeAnnotator implements Annotator {
             new Rule("$Second", "seconds"),
             new Rule("$Second", "sec"),
             new Rule("$Second", "secs"),
-			new Rule("$Second", "s"),
+            new Rule("$Second", "s"),
 
-			new Rule("$Minute", "minute"),
+            new Rule("$Minute", "minute"),
             new Rule("$Minute", "minutes"),
             new Rule("$Minute", "min"),
             new Rule("$Minute", "m"),
@@ -104,13 +104,12 @@ public class DateTimeAnnotator implements Annotator {
             new Rule("$AtBy", "$At", SemanticUtils::first),
             new Rule("$AtBy", "$By", SemanticUtils::first),
 
-			new Rule(CAT_DATE, "?$In $DATE_MONTH", SemanticUtils::last),
-			new Rule(CAT_DATE, "?$On ?$The $DATE_DAY", SemanticUtils::last),
-			new Rule(CAT_DATE, "?$On ?$The $DATE_DAY ?$Of $DATE_MONTH", SemanticUtils::merge),
-			new Rule(CAT_DATE, "?$On $DATE_MONTH $DATE_DAY", SemanticUtils::merge),
-			new Rule(CAT_DATE, "?$On ?$The $DATE_DAY ?$Of $DATE_MONTH $DATE_YEAR", SemanticUtils::merge),
-			new Rule(CAT_DATE, "?$On $DATE_MONTH $DATE_DAY $DATE_YEAR", SemanticUtils::merge),
-			//new Rule(CAT_DATE, "$On $DATE_DOW", LogicalFormOld::last),
+            new Rule(CAT_DATE, "?$In $DATE_MONTH", SemanticUtils::last),
+            new Rule(CAT_DATE, "?$On ?$The $DATE_DAY", SemanticUtils::last),
+            new Rule(CAT_DATE, "?$On ?$The $DATE_DAY ?$Of $DATE_MONTH", SemanticUtils::merge),
+            new Rule(CAT_DATE, "?$On $DATE_MONTH $DATE_DAY", SemanticUtils::merge),
+            new Rule(CAT_DATE, "?$On ?$The $DATE_DAY ?$Of $DATE_MONTH $DATE_YEAR", SemanticUtils::merge),
+            new Rule(CAT_DATE, "?$On $DATE_MONTH $DATE_DAY $DATE_YEAR", SemanticUtils::merge),
 
             new Rule(CAT_DATE, "$DATE_ELEMENT ?$DATE", SemanticUtils::merge),
             new Rule("$DATE_ELEMENT", "?$In ?$The $DATE_SHIFT", SemanticUtils::last),
@@ -154,11 +153,11 @@ public class DateTimeAnnotator implements Annotator {
             new Rule("$DATE_DURATION", "$A $Year", SemanticUtils.named("year", 1.0))
             );
 
-	public static final Annotator INSTANCE = new DateTimeAnnotator();
+    public static final Annotator INSTANCE = new DateTimeAnnotator();
 
-	private Map<String, Number> mapMonths, mapDow;
+    private Map<String, Number> mapMonths, mapDow;
 
-	private DateTimeAnnotator() {
+    private DateTimeAnnotator() {
         mapMonths = new HashMap<>();
         mapDow = new HashMap<>();
 
@@ -167,78 +166,78 @@ public class DateTimeAnnotator implements Annotator {
 
         for(int i = 0; i < DOW.size(); i++)
             mapDow.put(DOW.get(i), (i%7)+1.0);
-		
-	}
 
-	@Override
-	public List<Rule> annotate(List<String> tokens) {
-		if(tokens.size() == 1) {
-			String s = tokens.get(0).toLowerCase();
-			Rule r = parseMonth(s);
-			if(r == null)
-				r = parseDay(s);
+    }
+
+    @Override
+    public List<Rule> annotate(List<String> tokens) {
+        if(tokens.size() == 1) {
+            String s = tokens.get(0).toLowerCase();
+            Rule r = parseMonth(s);
+            if(r == null)
+                r = parseDay(s);
             if(r == null)
                 r = parseTime(s);
-			if(r != null)
-				return Collections.singletonList(r);
-			else
-				return parseNumber(s);
-		}
-		
-		return Collections.emptyList();
-	}
-	
-	
-	private Rule parseMonth(String s) {
-		Rule r = null;
-		
-		if(mapMonths.containsKey(s.toLowerCase()))
-			r = new Rule("$DATE_MONTH", s, SemanticUtils.named("month", mapMonths.get(s)));
-		
-		
-		return r;
-	}
+            if(r != null)
+                return Collections.singletonList(r);
+            else
+                return parseNumber(s);
+        }
+
+        return Collections.emptyList();
+    }
 
 
-	private Rule parseDay(String s) {
-		Rule r = null;
-		if(s.equals("today"))
-			r = new Rule("$DATE_OFFSET", s, SemanticUtils.named("offset", SemanticUtils.named("day", 0.0)));
-		else if(s.equals("tomorrow"))
-			r = new Rule("$DATE_OFFSET", s, SemanticUtils.named("offset", SemanticUtils.named("day", 1.0)));
-		else if(mapDow.containsKey(s))
-			r = new Rule("$DATE_DOW", s, SemanticUtils.named("dow", mapDow.get(s)));
-		
-		return r;
-	}
-	
-	private List<Rule> parseNumber(String s) {
-		List<Rule> rules = new LinkedList<>();
-		
-		Matcher m = PATTERN_NUMBER.matcher(s);
-		if(m.matches()) {
-			Integer num = Integer.valueOf(m.group(1));
-			if(num >= 1 && num <= 31)
-				rules.add(new Rule("$DATE_DAY", s, SemanticUtils.named("day", num.doubleValue())));
-			
-			if(num >= 1 && num <= 12)
-				rules.add(new Rule("$DATE_MONTH", s, SemanticUtils.named("month", num.doubleValue())));
-			
-			if((num >= 1 && num <= 99) || (num >= 1970 && num <= 2100))
-				rules.add(new Rule("$DATE_YEAR", s, SemanticUtils.named("year", num.doubleValue())));
+    private Rule parseMonth(String s) {
+        Rule r = null;
+
+        if(mapMonths.containsKey(s.toLowerCase()))
+            r = new Rule("$DATE_MONTH", s, SemanticUtils.named("month", mapMonths.get(s)));
+
+
+        return r;
+    }
+
+
+    private Rule parseDay(String s) {
+        Rule r = null;
+        if(s.equals("today"))
+            r = new Rule("$DATE_OFFSET", s, SemanticUtils.named("offset", SemanticUtils.named("day", 0.0)));
+        else if(s.equals("tomorrow"))
+            r = new Rule("$DATE_OFFSET", s, SemanticUtils.named("offset", SemanticUtils.named("day", 1.0)));
+        else if(mapDow.containsKey(s))
+            r = new Rule("$DATE_DOW", s, SemanticUtils.named("dow", mapDow.get(s)));
+
+        return r;
+    }
+
+    private List<Rule> parseNumber(String s) {
+        List<Rule> rules = new LinkedList<>();
+
+        Matcher m = PATTERN_NUMBER.matcher(s);
+        if(m.matches()) {
+            Integer num = Integer.valueOf(m.group(1));
+            if(num >= 1 && num <= 31)
+                rules.add(new Rule("$DATE_DAY", s, SemanticUtils.named("day", num.doubleValue())));
+
+            if(num >= 1 && num <= 12)
+                rules.add(new Rule("$DATE_MONTH", s, SemanticUtils.named("month", num.doubleValue())));
+
+            if((num >= 1 && num <= 99) || (num >= 1970 && num <= 2100))
+                rules.add(new Rule("$DATE_YEAR", s, SemanticUtils.named("year", num.doubleValue())));
 
             if(num >= 100 && num <= 1259) {
                 Integer min = num % 100;
                 Integer hr = num / 100;
                 final Map<String, Object> template = SemanticUtils.named("hour", hr.doubleValue());
                 if(min > 0)
-					template.put("minute", min.doubleValue());
+                    template.put("minute", min.doubleValue());
                 rules.add(new Rule("$DATE_TIME", s, template));
             }
-		}
-		
-		return rules;
-	}
+        }
+
+        return rules;
+    }
 
     private Rule parseTime(String s) {
         Rule rule = null;
@@ -249,10 +248,10 @@ public class DateTimeAnnotator implements Annotator {
 
         return rule;
     }
-	
-	public static List<Rule> rules(){
-		
-		return DATE_RULES;
-	}
+
+    public static List<Rule> rules(){
+
+        return DATE_RULES;
+    }
 
 }
