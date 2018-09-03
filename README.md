@@ -101,14 +101,16 @@ Parsing is no good if we cannot extract the meaning of the sentence. This meanin
 new Rule("$Action", "$EnableDisable", "{action:@first}"),
 ```
 `@first` tells the parser to pick the value of the first category of the rule RHS. In this case it will be either 'enable' or 'disable' based on the sentence. Other markers include:
+* `@identity`: Identity function
 * `@last`: Pick the value of the last RHS category
 * `@N`: Pick the value of the N<sup>th</sup> RHS catgory, e.g. `@3` will pick the 3rd
 * `@merge`: Merge values of all the categories. Only named values (e.g. `{action: enable}`) will be merged
+* `@append`: Append values of all the categories into a list. Resulting list must be named. Only named values are allowed
 
 After adding semantic markers our rules become:
 ```java
 List<Rule> rules = Arrays.asList(
-  new Rule("$ROOT", "$Setting", "@first"),
+  new Rule("$ROOT", "$Setting", "@identity"),
   new Rule("$Setting", "$Feature $Action", "@merge"),
   new Rule("$Setting", "$Action $Feature", "@merge"),
   
@@ -159,6 +161,26 @@ You should get the following output:
 [{feature=gps, action=disable}]
 ```
 Try out other variations. If a parse fails for a sample variant you'll get no output. You can then add or modify the rules and repeat the grammar engineering process. 
+
+### Supporting Lists
+EasyNLU now supports lists in the structured form. For the above domain it can handle inputs like
+> Disable location bt gps
+
+Add these 3 extra rules to the above grammar:
+```
+  new Rule("$Setting", "$Action $FeatureGroup", "@merge"),
+  new Rule("$FeatureGroup", "$Feature $Feature", "{featureGroup: @append}"),
+  new Rule("$FeatureGroup", "$FeatureGroup $Feature", "{featureGroup: @append}"),
+```
+Run a new query like:
+```
+System.out.println(parser.parse("disable location bt gps"));
+```
+You should get this output:
+```
+[{action=disable, featureGroup=[{feature=gps}, {feature=bluetooth}, {feature=gps}]}]
+```
+Note that these rules get triggered only if there is more than one feature in the query
 
 ### Using annotators
 Annotators make it easier to specific types of tokens that would otherwise be cumbersome or downright impossible to handle via rules. For instance take the `NumberAnnotator` class. It will detect and annotate all numbers as `$NUMBER`. You can then directly reference the category in your rules, e.g:
